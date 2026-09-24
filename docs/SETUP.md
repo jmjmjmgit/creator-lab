@@ -96,6 +96,21 @@ Replace the example values with your own keys. Keep just one value per setting. 
 
 The default local pacing settings are `FIREWORKS_REQUESTS_PER_MINUTE=60` and `GROQ_REQUESTS_PER_MINUTE=20`. These are local ceilings, not a statement of your account quota. Lower them if your account has a lower limit. Audio-duration quotas can also apply.
 
+### Classify with hcnsec or another OpenAI-compatible API instead of Jev
+
+If you cannot get a TypeSafe account, any provider with an OpenAI-compatible chat API can label the scripts instead. That includes hcnsec, DeepSeek, and OpenRouter. Set these in `.env` and leave `TYPESAFE_API_KEY` empty:
+
+```dotenv
+CLASSIFIER=llm
+LLM_API_KEY=your_provider_key
+LLM_BASE_URL=https://api.hcnsec.cn/v1
+LLM_MODEL=model_name_from_your_provider
+```
+
+If you don't know the exact model name, leave `LLM_MODEL` empty, start the app, and use **Save & verify connections**. The result lists the model names your key can use. Copy one into `.env` and restart. For another provider, change `LLM_BASE_URL` to its OpenAI-compatible address, usually ending in `/v1`.
+
+The model receives the same speech-only transcript and category descriptions Jev would. It returns its own confidence estimate for each label, which is rougher than Jev's calibrated probabilities, so treat the review flags as a hint. Cached labels are kept separately for each model, so switching models reclassifies rather than reusing old answers. To show a cost estimate, set `LLM_INPUT_USD_PER_M` and `LLM_OUTPUT_USD_PER_M` to your provider's price per million tokens in dollars. Otherwise the dashboard shows the cost as unknown, and your provider's dashboard has the real figure.
+
 Keys can alternatively be supplied through environment variables or the app's **Connections** dialog. Dialog keys last until the server stops. `.env` keys persist locally. This distribution does not read a parent folder's `.env`.
 
 ## 5. Launch and verify

@@ -56,6 +56,7 @@ Jev sees the speech before performance metrics are joined. Views and plays remai
 | Transcribe, default option | [Fireworks](https://fireworks.ai/) | `TRANSCRIPTION_PROVIDER=fireworks`, `FIREWORKS_API_KEY` |
 | Transcribe, alternative | [Groq](https://console.groq.com/docs/speech-to-text) | `TRANSCRIPTION_PROVIDER=groq`, `GROQ_API_KEY` |
 | Classify scripts | [TypeSafe Jev](https://docs.typesafe.ai/api) | `TYPESAFE_API_KEY` |
+| Classify scripts, alternative | Any OpenAI-compatible API, such as hcnsec or DeepSeek | `CLASSIFIER=llm`, `LLM_API_KEY`, `LLM_BASE_URL`, `LLM_MODEL` ([setup](docs/SETUP.md#classify-with-hcnsec-or-another-openai-compatible-api-instead-of-jev)) |
 
 Use either transcription provider. There is no automatic switch that could charge a different provider. Restart the server after changing `.env`.
 
