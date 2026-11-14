@@ -13,3 +13,5 @@ Where the owner got stuck during setup: running npm from the home folder instead
 Never print or commit `.env` or key values. Before claiming a change works, run `npm run check` and `npm test`. These make no paid calls.
 
 Still open: the cost counter shows "Unknown" for the LLM classifier unless `LLM_INPUT_USD_PER_M` and `LLM_OUTPUT_USD_PER_M` are set, and hcnsec bills in yuan. The footer and schema dialog in `public/index.html` still mention Jev as static text.
+
+Next project: a LinkedIn version of the same tool. The step-by-step plan is in docs/LINKEDIN_PLAN.md. Start with Phase 0, which needs a real scraper sample from the owner before any code is written.
